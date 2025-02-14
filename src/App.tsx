@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import { Canvas, IText } from "fabric";
+import { Canvas, Circle, IText, Rect } from "fabric";
 
 import FabricCanvas from "./canvas/FabricCanvas";
 import SidebarTools from "./sidebar/SidebarTools";
@@ -11,7 +11,7 @@ function App() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const canvas = new Canvas(canvasRef.current!, { backgroundColor: "#fff" });
+    const canvas = new Canvas(canvasRef.current!);
 
     canvas.setDimensions({ width: 800, height: 600 });
 
@@ -30,14 +30,50 @@ function App() {
       fontSize: 20,
     });
 
-    console.log(canvas);
     canvas.add(text);
     canvas.centerObject(text);
     canvas.setActiveObject(text);
   }
+
+  function onAddCircle() {
+    if (canvas === null) {
+      return;
+    }
+    const circle = new Circle({
+      fill: "#ac568f",
+      height: 100,
+      width: 100,
+      radius: 50,
+    });
+
+    canvas.add(circle);
+    canvas.centerObject(circle);
+    canvas.setActiveObject(circle);
+  }
+
+  function onAddRect() {
+    if (canvas === null) {
+      return;
+    }
+    const rect = new Rect({
+      fill: "#7f3aa7",
+      height: 100,
+      width: 100,
+      radius: 50,
+    });
+
+    canvas.add(rect);
+    canvas.centerObject(rect);
+    canvas.setActiveObject(rect);
+  }
+
   return (
     <div className="main-box">
-      <SidebarTools onAddText={onAddText} />
+      <SidebarTools
+        onAddText={onAddText}
+        onAddCircle={onAddCircle}
+        onAddRect={onAddRect}
+      />
       <FabricCanvas ref={canvasRef} />
     </div>
   );
