@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import { Canvas } from "fabric";
+import { Canvas, IText } from "fabric";
 
 import FabricCanvas from "./canvas/FabricCanvas";
 import SidebarTools from "./sidebar/SidebarTools";
@@ -22,9 +22,22 @@ function App() {
     };
   }, [canvasRef, setCanvas]);
 
+  function onAddText() {
+    if (canvas === null) {
+      return;
+    }
+    const text = new IText("edit me!", {
+      fontSize: 20,
+    });
+
+    console.log(canvas);
+    canvas.add(text);
+    canvas.centerObject(text);
+    canvas.setActiveObject(text);
+  }
   return (
     <div className="main-box">
-      <SidebarTools canvas={canvas} />
+      <SidebarTools onAddText={onAddText} />
       <FabricCanvas ref={canvasRef} />
     </div>
   );
