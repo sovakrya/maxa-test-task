@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "fabric": "^6.6.0",
+    "fabricjs-react": "^2.1.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "sass": "^1.85.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
