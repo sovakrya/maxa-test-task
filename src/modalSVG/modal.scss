@@ -1,0 +1,43 @@
+.modal-wrapper {
+  padding: 0;
+  border: none;
+  background-color: #ffffff;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+
+  &::backdrop {
+    background-color: #2b2b2b9d;
+  }
+}
+
+.modal-box {
+  display: flex;
+  gap: 16px;
+  padding: 24px;
+  align-items: center;
+  flex-direction: column;
+  width: 600px;
+  height: 400px;
+  word-break: break-all;
+  overflow: auto;
+}
+
+.modal-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.modal-body {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 12px;
+}
+
+.modal-btn {
+  height: 40px;
+  width: 100px;
+  place-self: self-end;
+  justify-self: center;
+}

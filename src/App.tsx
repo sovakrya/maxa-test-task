@@ -8,6 +8,7 @@ import "./App.scss";
 
 function App() {
   const [canvas, setCanvas] = useState<Canvas | null>(null);
+  const [svg, setSvg] = useState("");
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -67,7 +68,7 @@ function App() {
     canvas.setActiveObject(rect);
   }
 
-  function OnDownloadFile(e: React.ChangeEvent<HTMLInputElement>) {
+  function onDownloadFile(e: React.ChangeEvent<HTMLInputElement>) {
     if (canvas === null) {
       return;
     }
@@ -97,13 +98,24 @@ function App() {
     e.target.value = "";
   }
 
+  function onGetSvg() {
+    if (!canvas) {
+      return;
+    }
+
+    const svgFromCanvas = canvas.toSVG();
+    setSvg(svgFromCanvas);
+  }
+
   return (
     <div className="main-box">
       <SidebarTools
         onAddText={onAddText}
         onAddCircle={onAddCircle}
         onAddRect={onAddRect}
-        OnDownloadFile={OnDownloadFile}
+        onDownloadFile={onDownloadFile}
+        onGetSvg={onGetSvg}
+        svg={svg}
       />
       <FabricCanvas ref={canvasRef} />
     </div>
