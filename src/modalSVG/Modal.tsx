@@ -49,7 +49,7 @@ export default function Modal({
     <dialog ref={dialogRef} className="modal-wrapper">
       <div className="modal-box">
         <div className="modal-header">
-          <h2>Your svg!</h2>
+          <h2 className="model-title">Your svg!</h2>
         </div>
 
         <div className="modal-body">

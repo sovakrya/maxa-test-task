@@ -31,33 +31,45 @@ export default function SidebarTools(props: SidebarToolsProps) {
   }
 
   return (
-    <div className="tool-box">
-      <button onClick={props.onAddText}>
-        <img src={TextIcon} alt="text icon" height={40} width={40} />
-      </button>
+    <div className="sidebar-box">
+      <h1 className="sidebar-title">MAXA test task</h1>
 
-      <button onClick={props.onAddCircle}>
-        <img src={CircleIcon} alt="circle icon" height={40} width={40} />
-      </button>
+      <div className="tools-wrapper">
+        <h2 className="tools-title">Tools</h2>
 
-      <button onClick={props.onAddRect}>
-        <img src={RectIcon} alt="rect icon" height={40} width={40} />
-      </button>
+        <div className="tools-box">
+          <button onClick={props.onAddText}>
+            <img src={TextIcon} alt="text icon" height={20} width={20} />
+            <span>text</span>
+          </button>
 
-      <button className="btn">
-        <img src={ImageIcon} alt="image icon" height={40} width={40} />
-        <input
-          className="input-tool-box"
-          type="file"
-          accept=".png, .jpg, .jpeg"
-          onChange={(e) => props.onDownloadFile(e)}
-        />
-      </button>
+          <button onClick={props.onAddCircle}>
+            <img src={CircleIcon} alt="circle icon" height={20} width={20} />
+            <span>circle</span>
+          </button>
 
-      <button onClick={createSvg}>
-        <img src={SaveIcon} alt="rect icon" height={40} width={40} />
-      </button>
+          <button onClick={props.onAddRect}>
+            <img src={RectIcon} alt="rect icon" height={20} width={20} />
+            <span>square</span>
+          </button>
 
+          <button className="btn">
+            <img src={ImageIcon} alt="image icon" height={20} width={20} />
+            <span>image</span>
+            <input
+              className="input-tool-box"
+              type="file"
+              accept=".png, .jpg, .jpeg"
+              onChange={(e) => props.onDownloadFile(e)}
+            />
+          </button>
+
+          <button onClick={createSvg}>
+            <img src={SaveIcon} alt="save icon" height={20} width={20} />
+            <span>save</span>
+          </button>
+        </div>
+      </div>
       <Modal onChangeShow={onChangeShow} show={show} svg={props.svg} />
     </div>
   );

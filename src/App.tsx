@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     const canvas = new Canvas(canvasRef.current!);
 
-    canvas.setDimensions({ width: 800, height: 600 });
+    canvas.setDimensions({ width: 1000, height: 900 });
 
     setCanvas(canvas);
 

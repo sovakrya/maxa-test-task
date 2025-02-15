@@ -7,7 +7,7 @@ export default function FabricCanvas({
 }) {
   return (
     <div className="canvas-box">
-      <canvas ref={ref} width="800" height="600"></canvas>
+      <canvas ref={ref} width="1000" height="900"></canvas>
     </div>
   );
 }
