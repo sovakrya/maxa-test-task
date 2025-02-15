@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import { Canvas, Circle, IText, Rect } from "fabric";
+import { Canvas, Circle, FabricImage, IText, Rect } from "fabric";
 
 import FabricCanvas from "./canvas/FabricCanvas";
 import SidebarTools from "./sidebar/SidebarTools";
@@ -67,12 +67,43 @@ function App() {
     canvas.setActiveObject(rect);
   }
 
+  function OnDownloadFile(e: React.ChangeEvent<HTMLInputElement>) {
+    if (canvas === null) {
+      return;
+    }
+
+    const file = e.target!.files![0];
+    const reader = new FileReader();
+
+    reader.onload = async (e) => {
+      if (e.target === null) {
+        return;
+      }
+
+      if (e.target.result === null) {
+        return;
+      }
+
+      if (typeof e.target.result !== "string") {
+        return;
+      }
+      const image = await FabricImage.fromURL(e.target.result);
+      image.scale(0.5);
+      canvas.add(image);
+      canvas.centerObject(image);
+      canvas.setActiveObject(image);
+    };
+    reader.readAsDataURL(file);
+    e.target.value = "";
+  }
+
   return (
     <div className="main-box">
       <SidebarTools
         onAddText={onAddText}
         onAddCircle={onAddCircle}
         onAddRect={onAddRect}
+        OnDownloadFile={OnDownloadFile}
       />
       <FabricCanvas ref={canvasRef} />
     </div>
