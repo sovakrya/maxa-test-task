@@ -5,6 +5,8 @@ import ImageIcon from "../assets/icons/image-icon.svg";
 import SaveIcon from "../assets/icons/save-icon.svg";
 import RedoIcon from "../assets/icons/redo-icon.svg";
 import UndoIcon from "../assets/icons/undo-icon.svg";
+import PlusIcon from "../assets/icons/plus-icon.svg";
+import MinesIcon from "../assets/icons/minus-icon.svg";
 
 import "./sidebarTools.scss";
 
@@ -19,6 +21,8 @@ type SidebarToolsProps = {
   onGetSvg: () => void;
   onRedo: () => void;
   onUndo: () => void;
+  onIncrease: () => void;
+  onDecrease: () => void;
   svg: string;
 };
 
@@ -86,6 +90,21 @@ export default function SidebarTools(props: SidebarToolsProps) {
           <button onClick={props.onRedo}>
             <img src={RedoIcon} height={20} width={20} alt="redo icon" />
             <span>redo</span>
+          </button>
+        </div>
+      </div>
+
+      <div className="tools-wrapper">
+        <h2 className="tools-title">Zoom</h2>
+
+        <div className="tools-box">
+          <button onClick={props.onIncrease}>
+            <img src={PlusIcon} alt="plus icon" height={20} width={20} />
+            <span>increase</span>
+          </button>
+          <button onClick={props.onDecrease}>
+            <img src={MinesIcon} alt="minus icon" height={20} width={20} />
+            <span>decrease</span>
           </button>
         </div>
       </div>

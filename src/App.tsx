@@ -132,6 +132,24 @@ function App() {
     canvas.add(historyObject);
   }
 
+  function onIncrease() {
+    if (!canvas) {
+      return;
+    }
+
+    canvas.setZoom(canvas.getZoom() * 1.3);
+    canvas.renderAll();
+  }
+
+  function onDecrease() {
+    if (!canvas) {
+      return;
+    }
+
+    canvas.setZoom(canvas.getZoom() / 1.3);
+    canvas.renderAll();
+  }
+
   return (
     <div className="main-box">
       <SidebarTools
@@ -142,6 +160,8 @@ function App() {
         onGetSvg={onGetSvg}
         onRedo={onRedo}
         onUndo={onUndo}
+        onIncrease={onIncrease}
+        onDecrease={onDecrease}
         svg={svg}
       />
       <FabricCanvas ref={canvasRef} />
