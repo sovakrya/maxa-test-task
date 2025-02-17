@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import { Canvas, Circle, FabricImage, IText, Rect } from "fabric";
+import { Canvas, Circle, FabricImage, FabricObject, IText, Rect } from "fabric";
 
 import FabricCanvas from "./canvas/FabricCanvas";
 import SidebarTools from "./sidebar/SidebarTools";
@@ -10,6 +10,7 @@ function App() {
   const [canvas, setCanvas] = useState<Canvas | null>(null);
   const [svg, setSvg] = useState("");
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const history: FabricObject[] = [];
 
   useEffect(() => {
     const canvas = new Canvas(canvasRef.current!);
@@ -107,6 +108,30 @@ function App() {
     setSvg(svgFromCanvas);
   }
 
+  function onUndo() {
+    if (!canvas) {
+      return;
+    }
+    const fabricObject = canvas._objects.pop();
+    if (!fabricObject) {
+      return;
+    }
+    history.push(fabricObject);
+    canvas.renderAll();
+  }
+
+  function onRedo() {
+    if (!canvas) {
+      return;
+    }
+
+    const historyObject = history.pop();
+    if (!historyObject) {
+      return;
+    }
+    canvas.add(historyObject);
+  }
+
   return (
     <div className="main-box">
       <SidebarTools
@@ -115,6 +140,8 @@ function App() {
         onAddRect={onAddRect}
         onDownloadFile={onDownloadFile}
         onGetSvg={onGetSvg}
+        onRedo={onRedo}
+        onUndo={onUndo}
         svg={svg}
       />
       <FabricCanvas ref={canvasRef} />

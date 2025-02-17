@@ -3,6 +3,8 @@ import CircleIcon from "../assets/icons/circle-icon.svg";
 import RectIcon from "../assets/icons/square-icon.svg";
 import ImageIcon from "../assets/icons/image-icon.svg";
 import SaveIcon from "../assets/icons/save-icon.svg";
+import RedoIcon from "../assets/icons/redo-icon.svg";
+import UndoIcon from "../assets/icons/undo-icon.svg";
 
 import "./sidebarTools.scss";
 
@@ -15,6 +17,8 @@ type SidebarToolsProps = {
   onAddRect: () => void;
   onDownloadFile: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onGetSvg: () => void;
+  onRedo: () => void;
+  onUndo: () => void;
   svg: string;
 };
 
@@ -67,6 +71,21 @@ export default function SidebarTools(props: SidebarToolsProps) {
           <button onClick={createSvg}>
             <img src={SaveIcon} alt="save icon" height={20} width={20} />
             <span>save</span>
+          </button>
+        </div>
+      </div>
+
+      <div className="tools-wrapper">
+        <h2 className="tools-title">History</h2>
+
+        <div className="tools-box">
+          <button onClick={props.onUndo}>
+            <img src={UndoIcon} height={20} width={20} alt="undo icon" />
+            <span>undo</span>
+          </button>
+          <button onClick={props.onRedo}>
+            <img src={RedoIcon} height={20} width={20} alt="redo icon" />
+            <span>redo</span>
           </button>
         </div>
       </div>
