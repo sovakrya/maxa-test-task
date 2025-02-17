@@ -1,50 +1,43 @@
-# React + TypeScript + Vite
+Тестовое задание для MaxaSoftware.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Задание:
+Используя библиотеку FabricJs и React реализовать следующее приложение:
 
-Currently, two official plugins are available:
+Обязательный функционал:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Рабочее поле (Canvas), в которое можно добавлять элементы выбранные в Sidebar: текст / SVG фигуры / картинки PNG / JPG.
+Реализовать кнопку Save: по клику показывать модальное окно с SVG кодом дизайна.
 
-## Expanding the ESLint configuration
+Опциональный функционал:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Реализовать функционал для кнопок Undo / Redo для истории изменений в рабочей области (будет плюсом если реализуете механизм без готовых библиотек).
+Реализовать Zoom + / - для рабочей области.
 
-- Configure the top-level `parserOptions` property like this:
+Один из ключевых навыков frontend-разработчика — встроенное чувство прекрасного! Понимание общепринятых стандартов интерфейса, его логичность и понятность, поэтому при реализации приложения большим плюсом будет качественный интерфейс.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Редактор изображений и графики
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Основные возможности:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Холст и боковая панель
+Простое и интуитивно понятное рабочее пространство с холстом для создания композиций и боковой панелью для доступа к инструментам.
+
+Добавление текста
+Вставляйте текстовые элементы.
+
+Добавление фигур
+Включает базовые фигуры, такие как круги и квадраты, с возможностью изменения их размера и положения.
+
+Загрузка изображений
+Загружайте собственные изображения и добавляйте их на холст для дальнейшего редактирования.
+
+Экспорт в SVG
+Получайте SVG-код вашего дизайна.
+
+Отмена и повтор действий
+Удобная функция отмены и повтора действий.
+
+Масштабирование холста
+Увеличивайте или уменьшайте масштаб холста.
